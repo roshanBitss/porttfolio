@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KELLY Navbar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      font-family: 'DM Sans', sans-serif;
+      background: #f8f9fa;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .main-content {
+      flex: 1 0 auto;
+      width: 100%;
+    }
+
+    .navbar {
+      background-color: #ecebe9;
+      padding: 1rem 2rem;
+      z-index: 10;
+    }
+
+    .navbar-nav .nav-link {
+      position: relative;
+      color: #333;
+      font-weight: 500;
+      margin: 0 10px;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #20c997;
+    }
+
+    .navbar-nav .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #20c997;
+    }
+
+    .social-icons a {
+      color: #444;
+      margin-left: 10px;
+      font-size: 1.1rem;
+    }
+
+    .social-icons a:hover {
+      color: #20c997;
+    }
+
+    .hero-section {
+      min-height: 100vh;
+      background: linear-gradient(rgba(32,201,151,0.7),rgba(32,201,151,0.3)), url('imgs/r2.jpg') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding-top: 5rem;
+      padding-bottom: 3rem;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      text-shadow: 0 2px 8px #0005;
+    }
+
+    .hero-content img {
+      width: 140px;
+      height: 140px;
+      border: 4px solid #fff;
+      box-shadow: 0 2px 16px #0002;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .recent-projects-section {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px #0001;
+      padding: 2.5rem 1rem;
+      margin: 2rem auto 2rem auto;
+      max-width: 1100px;
+    }
+
+    .project-card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px #0001;
+      transition: transform 0.2s;
+      height: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 4px 24px #20c99722;
+    }
+
+    .project-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .footer {
+      background-color: #ecebe9 !important;
+      flex-shrink: 0;
+      width: 100%;
+      margin-top: auto;
+      box-shadow: 0 -2px 8px #0001;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.2rem; }
+      .hero-content h4, .typewriter { font-size: 1.1rem; }
+      .recent-projects-section { padding: 1.5rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg w-100">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-semibold" href="#">ROSHAN</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('resume') }}">Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('services') }}">Awards & Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('portfolio') }}">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="d-none d-lg-flex social-icons">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="www.linkedin.com/in/roshanbitlingu"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section position-relative">
+      <div class="hero-content container position-relative">
+        <img src="{{ url_for('static', filename='imgs/roshan.jpeg') }}">
+        <h1 class="display-4 fw-bold mb-2" id="greeting">Hi, I'm Roshan Bitlingu</h1>
+        <h4 class="mb-4 typewriter" id="typewriter"></h4>
+        <a href="portfolio.html" class="btn btn-success btn-lg px-5 py-2">View Portfolio</a>
+      </div>
+    </section>
+
+  
+  <!-- Footer -->
+  <footer class="footer bg-light text-center py-3">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <span class="mb-2 mb-md-0">&copy; 2024 ROSHAN. All rights reserved.</span>
+      <div class="social-icons">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="www.linkedin.com/in/roshanbitlingu"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Typewriter effect for subtitle
+    const typewriterTexts = [
+      'Web Developer & Designer',
+      'IoT and Robotics Enthusiast',
+      'Open Source Contributor',
+      'Passionate Problem Solver'
+    ];
+    let twIndex = 0, charIndex = 0, isDeleting = false;
+    const typewriterElem = document.getElementById('typewriter');
+    function typeWriter() {
+      const current = typewriterTexts[twIndex];
+      if (isDeleting) {
+        typewriterElem.textContent = current.substring(0, charIndex--);
+        if (charIndex < 0) {
+          isDeleting = false;
+          twIndex = (twIndex + 1) % typewriterTexts.length;
+          setTimeout(typeWriter, 600);
+        } else {
+          setTimeout(typeWriter, 40);
+        }
+      } else {
+        typewriterElem.textContent = current.substring(0, charIndex++);
+        if (charIndex > current.length) {
+          isDeleting = true;
+          setTimeout(typeWriter, 1200);
+        } else {
+          setTimeout(typeWriter, 80);
+        }
+      }
+    }
+    typeWriter();
+
+    // Dynamic greeting based on time
+    const greetingElem = document.getElementById('greeting');
+    const hour = new Date().getHours();
+    let greet = "Hi, I'm Roshan Kumar";
+    if (hour < 12) greet = 'Good Morning, I\'m Roshan Bitlingu';
+    else if (hour < 18) greet = 'Good Afternoon, I\'m Roshan Bitlingu';
+    else greet = 'Good Evening, I\'m Roshan Bitlingu';
+    greetingElem.textContent = greet;
+
+    // Dynamic Recent Projects
+    const projects = [
+      {
+        title: 'Smart Parking System (IoT)',
+        img: 'imgs/r1.png',
+        desc: 'Built a smart parking solution with sensor integration and real-time monitoring.'
+      },
+      {
+        title: 'Java Bill Generator',
+        img: 'imgs/r1.jpg',
+        desc: 'Created a desktop billing application using Java Swing with modular class structure.'
+      },
+      {
+        title: 'VPlace – College Placement Portal',
+        img: 'imgs/roshan.jpeg',
+        desc: 'Developed a Django-based portal with secure REST APIs and optimized database queries.'
+      }
+    ];
+    const projectsRow = document.getElementById('projects-row');
+    projects.forEach(project => {
+      const col = document.createElement('div');
+      col.className = 'col-md-4';
+      col.innerHTML = `
+        <div class="card project-card h-100">
+          <div class="card-body">
+            <h5 class="card-title">${project.title}</h5>
+            <p class="card-text">${project.desc}</p>
+          </div>
+        </div>
+      `;
+      projectsRow.appendChild(col);
+    });
+  </script>
+</body>
+</html>
